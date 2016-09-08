@@ -1,0 +1,33 @@
+
+
+
+<label for="">Post Title</label>
+{{input type="text" value=postTitle}}
+
+<label for="">Post Body</label>
+{{input type="text" value=postBody}}
+
+<button {{action 'addPost' postTitle postBody}} type="button" name="button">Add post</button>
+
+<br>
+
+{{#each model as |post|}}
+  <h3>Title:  {{post.title}} </h3>
+
+  <p>
+      Body: {{post.body}}
+  </p>
+  <button {{action 'deletePost' post}} type="button" name="button">Delete post</button>
+
+  {{#each post.comments as |comment|}}
+    <p>
+      ***** {{comment.body}}
+    </p>
+  {{/each}}
+
+  <hr>
+
+{{/each}}
+
+
+{{outlet}}
